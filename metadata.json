@@ -1,0 +1,11 @@
+{
+  "name": "TorqueLink J2534 Diagnostic Workstation",
+  "description": "Multi-manufacturer dealer-level automotive scan tool with real-time OBD-II live telemetry, bidirectional component testing, J2534 ECU flashing, immobilizer key relearning, and cloud diagnostic report storage.",
+  "requestFramePermissions": [
+    "bluetooth",
+    "serial"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

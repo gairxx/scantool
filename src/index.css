@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme static {
+  /* Daytime automotive diagnostic bench: machined aluminum ground, crisp schematic surface, deep ink, cobalt-cerulean action */
+  --color-background: oklch(0.955 0.008 85);
+  --color-surface: oklch(0.992 0.004 85);
+  --color-surface-recessed: oklch(0.935 0.01 85);
+  --color-foreground: oklch(0.19 0.022 245);
+  --color-muted: oklch(0.42 0.02 245);
+  --color-border: oklch(0.56 0.02 245);
+
+  --color-primary: oklch(0.42 0.125 232);
+  --color-primary-foreground: oklch(0.99 0.004 85);
+
+  /* Semantic instrument marks (AA >= 4.5:1 on light ground) */
+  --color-nominal: oklch(0.42 0.12 155);
+  --color-advisory: oklch(0.45 0.13 72);
+  --color-fault: oklch(0.45 0.175 26);
+
+  /* Colour-blind-safe telemetry trace hues at uniform L=0.45 (never purple/violet) */
+  --color-trace-1: oklch(0.45 0.16 28);
+  --color-trace-2: oklch(0.45 0.13 215);
+  --color-trace-3: oklch(0.45 0.12 162);
+  --color-trace-4: oklch(0.46 0.13 78);
+  --color-trace-5: oklch(0.45 0.11 192);
+  --color-trace-6: oklch(0.45 0.13 48);
+  --color-trace-7: oklch(0.44 0.09 125);
+  --color-trace-8: oklch(0.42 0.06 248);
+
+  --font-sans: "Atkinson Hyperlegible Next", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  --text-display: clamp(1.65rem, 1.25rem + 1.1vw, 2.25rem);
+  --text-display--line-height: 1.12;
+  --text-display--font-weight: 600;
+
+  --text-title: clamp(1.125rem, 1.02rem + 0.35vw, 1.3rem);
+  --text-title--line-height: 1.22;
+  --text-title--font-weight: 600;
+
+  --radius-card: 0.375rem;
+  --radius-control: 0.3125rem;
+  --shadow-surface: 0 1px 2px oklch(0.2 0.02 245 / 0.05);
+}
+
+html {
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+.svg-halo {
+  paint-order: stroke;
+  stroke: var(--color-surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *:not(.animate-spin):not(.animate-pulse),
+  *:not(.animate-spin):not(.animate-pulse)::before,
+  *:not(.animate-spin):not(.animate-pulse)::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

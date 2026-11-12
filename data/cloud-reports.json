@@ -1,0 +1,228 @@
+[
+  {
+    "id": "rep-20261112-01",
+    "reportNumber": "RO-88412-PRE",
+    "createdAtIso": "2026-11-12T09:18:00-08:00",
+    "scanType": "Pre-Scan",
+    "vin": "1FTFW1ED6PFA48219",
+    "year": 2023,
+    "make": "Ford",
+    "model": "F-150 Lariat PowerBoost",
+    "engine": "3.5L EcoBoost Hybrid V6",
+    "odometerKm": 46820,
+    "protocol": "ISO 15765-4 CAN FD (500k / 2M bps)",
+    "technicianBay": "Bay 4 · Master Diag",
+    "batteryVoltage": 12.42,
+    "modulesScanned": 8,
+    "modulesWithFaults": 3,
+    "dtcs": [
+      {
+        "code": "P0304",
+        "moduleId": "PCM",
+        "moduleName": "Powertrain Control Module",
+        "status": "Confirmed",
+        "description": "Cylinder 4 Misfire Detected under load transition",
+        "freezeFrameSummary": "2,480 rpm · 142 kPa MAP · 91 °C ECT · +9.4 % STFT1"
+      },
+      {
+        "code": "P0012",
+        "moduleId": "PCM",
+        "moduleName": "Powertrain Control Module",
+        "status": "Pending",
+        "description": "Intake Camshaft Position Timing - Over-Retarded (Bank 1)",
+        "freezeFrameSummary": "1,820 rpm · Actual 18.5 °CA vs Target 26.0 °CA"
+      },
+      {
+        "code": "U0155",
+        "moduleId": "GWM",
+        "moduleName": "Gateway Module A",
+        "status": "History",
+        "description": "Lost Communication With Instrument Panel Cluster Control Module"
+      },
+      {
+        "code": "B10D7:94",
+        "moduleId": "BCM",
+        "moduleName": "Body Control / PATS Immobilizer",
+        "status": "Pending",
+        "description": "PATS Key Transponder Slot #3 Unexpected Component Operation"
+      }
+    ],
+    "calibrationsApplied": [],
+    "keysProgrammedCount": 2,
+    "notes": "Customer states intermittent rough idle warm and spare smart fob fails start authorization. Initial full-network pre-scan captured prior to coil/injector balance and VCT solenoid actuation.",
+    "telemetrySnapshot": [
+      {
+        "pid": "010C",
+        "label": "Engine speed",
+        "value": 684,
+        "unit": "rpm"
+      },
+      {
+        "pid": "0105",
+        "label": "Coolant temp",
+        "value": 89,
+        "unit": "°C"
+      },
+      {
+        "pid": "0106",
+        "label": "Short fuel trim B1",
+        "value": 6.2,
+        "unit": "%"
+      },
+      {
+        "pid": "0142",
+        "label": "Control module voltage",
+        "value": 14.18,
+        "unit": "V"
+      }
+    ]
+  },
+  {
+    "id": "rep-20261111-04",
+    "reportNumber": "RO-88397-POST",
+    "createdAtIso": "2026-11-11T16:42:00-08:00",
+    "scanType": "Post-Scan",
+    "vin": "3MW5R7J04M8B91402",
+    "year": 2021,
+    "make": "BMW",
+    "model": "330i xDrive (G20)",
+    "engine": "2.0L TwinPower Turbo B46D",
+    "odometerKm": 61390,
+    "protocol": "DoIP ISO 13400 / HS-CAN 500 kbps",
+    "technicianBay": "Bay 2 · Euro Programming",
+    "batteryVoltage": 13.84,
+    "modulesScanned": 7,
+    "modulesWithFaults": 0,
+    "dtcs": [],
+    "calibrationsApplied": [
+      "DME-8694512-04 (I-Step S18A-26-07-530)"
+    ],
+    "keysProgrammedCount": 2,
+    "notes": "Completed J2534/DoIP DME calibration update for cold-start wastegate rattle TSB, reset Valvetronic end-stops, cleared all shadow fault memory, and verified zero faults on road test.",
+    "telemetrySnapshot": [
+      {
+        "pid": "010C",
+        "label": "Engine speed",
+        "value": 710,
+        "unit": "rpm"
+      },
+      {
+        "pid": "0105",
+        "label": "Coolant temp",
+        "value": 96,
+        "unit": "°C"
+      },
+      {
+        "pid": "010B",
+        "label": "Intake manifold pressure",
+        "value": 36,
+        "unit": "kPa"
+      },
+      {
+        "pid": "0142",
+        "label": "Control module voltage",
+        "value": 14.42,
+        "unit": "V"
+      }
+    ]
+  },
+  {
+    "id": "rep-20261110-09",
+    "reportNumber": "RO-88365-PRE",
+    "createdAtIso": "2026-11-10T11:05:00-08:00",
+    "scanType": "Pre-Scan",
+    "vin": "3MW5R7J04M8B91402",
+    "year": 2021,
+    "make": "BMW",
+    "model": "330i xDrive (G20)",
+    "engine": "2.0L TwinPower Turbo B46D",
+    "odometerKm": 61378,
+    "protocol": "DoIP ISO 13400 / HS-CAN 500 kbps",
+    "technicianBay": "Bay 2 · Euro Programming",
+    "batteryVoltage": 12.56,
+    "modulesScanned": 7,
+    "modulesWithFaults": 1,
+    "dtcs": [
+      {
+        "code": "P12A9",
+        "moduleId": "DME",
+        "moduleName": "Digital Motor Electronics",
+        "status": "Confirmed",
+        "description": "Boost Pressure Control Wastegate Actuator Position Drift Cold Start",
+        "freezeFrameSummary": "1,240 rpm · 18 °C ECT · 101 kPa BARO"
+      }
+    ],
+    "calibrationsApplied": [],
+    "keysProgrammedCount": 2,
+    "notes": "Pre-programming baseline report before applying I-Step S18A-26-07-530 DME software update.",
+    "telemetrySnapshot": [
+      {
+        "pid": "010C",
+        "label": "Engine speed",
+        "value": 1120,
+        "unit": "rpm"
+      },
+      {
+        "pid": "0105",
+        "label": "Coolant temp",
+        "value": 24,
+        "unit": "°C"
+      },
+      {
+        "pid": "010B",
+        "label": "Intake manifold pressure",
+        "value": 48,
+        "unit": "kPa"
+      },
+      {
+        "pid": "0142",
+        "label": "Control module voltage",
+        "value": 14.35,
+        "unit": "V"
+      }
+    ]
+  },
+  {
+    "id": "rep-20261109-02",
+    "reportNumber": "RO-88319-KEY",
+    "createdAtIso": "2026-11-09T14:22:00-08:00",
+    "scanType": "Immobilizer Audit",
+    "vin": "5TFCZ5AN8LX219084",
+    "year": 2020,
+    "make": "Toyota",
+    "model": "Tacoma TRD Off-Road",
+    "engine": "3.5L V6 2GR-FKS",
+    "odometerKm": 84215,
+    "protocol": "ISO 15765-4 CAN 11-bit 500 kbps",
+    "technicianBay": "Bay 1 · Locksmith & Elec",
+    "batteryVoltage": 13.45,
+    "modulesScanned": 6,
+    "modulesWithFaults": 0,
+    "dtcs": [],
+    "calibrationsApplied": [
+      "89663-04B73-A0 (2GR-FKS Shift Logic Calibration)"
+    ],
+    "keysProgrammedCount": 3,
+    "notes": "Registered additional OEM HYQ14FBB DST-AES 128-bit smart fob into Certification ECU slot #3 and flashed updated transmission shift calibration.",
+    "telemetrySnapshot": [
+      {
+        "pid": "010C",
+        "label": "Engine speed",
+        "value": 650,
+        "unit": "rpm"
+      },
+      {
+        "pid": "0105",
+        "label": "Coolant temp",
+        "value": 86,
+        "unit": "°C"
+      },
+      {
+        "pid": "0142",
+        "label": "Control module voltage",
+        "value": 13.92,
+        "unit": "V"
+      }
+    ]
+  }
+]
