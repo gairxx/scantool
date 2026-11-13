@@ -7,10 +7,12 @@ import {
   CheckCircle2,
   AlertTriangle,
   Library,
+  Flame,
 } from 'lucide-react';
 import { Button, Field, Surface, StatusMark } from './ui';
 import { VehicleModuleLibraryView } from './VehicleModuleLibraryView';
-import type { TelemetryOverrides } from '../lib/telemetryEngine';
+import { EngineTuningView } from './EngineTuningView';
+import type { TelemetryOverrides, TelemetryRingStore } from '../lib/telemetryEngine';
 import type {
   CalibrationPackage,
   EcuModule,
@@ -18,7 +20,7 @@ import type {
   VehicleProfile,
 } from '../types/diagnostic';
 
-export type ProgrammingSubMode = 'ecu_flash' | 'immobilizer' | 'library';
+export type ProgrammingSubMode = 'ecu_flash' | 'engine_tuning' | 'immobilizer' | 'library';
 
 interface ProgrammingAndKeysViewProps {
   vehicle: VehicleProfile;
@@ -26,6 +28,7 @@ interface ProgrammingAndKeysViewProps {
   keySlots: ImmobilizerKeySlot[];
   appliedCalibrations: string[];
   overrides: TelemetryOverrides;
+  ringStore: TelemetryRingStore;
   liveBatteryVolts: number;
   initialSubMode?: ProgrammingSubMode;
   initialFocusModuleId?: string | null;
@@ -48,6 +51,7 @@ export const ProgrammingAndKeysView: React.FC<ProgrammingAndKeysViewProps> = ({
   keySlots,
   appliedCalibrations,
   overrides,
+  ringStore,
   liveBatteryVolts,
   initialSubMode = 'ecu_flash',
   initialFocusModuleId = null,
@@ -268,18 +272,27 @@ export const ProgrammingAndKeysView: React.FC<ProgrammingAndKeysViewProps> = ({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-1">
             <h1 className="text-display text-foreground">
-              Module library, J2534 flashing &amp; immobilizer keys
+              Engine tuning, J2534 flashing, module library &amp; keys
             </h1>
             <p className="text-sm text-muted">
-              Retrieve OEM wiring diagrams, chassis location guides, and calibration files, or execute J2534 ECU flashing and key fob relearning.
+              Edit fuel VE, lambda, spark, VCT, and boost tables, flash OEM or custom calibrations via J2534, inspect module wiring, or relearn immobilizer keys.
             </p>
           </div>
 
           <div
             className="flex flex-wrap items-center gap-2"
             role="tablist"
-            aria-label="Programming and library mode"
+            aria-label="Programming, tuning and library mode"
           >
+            <Button
+              tone={subMode === 'engine_tuning' ? 'primary' : 'quiet'}
+              onClick={() => setSubMode('engine_tuning')}
+              role="tab"
+              aria-selected={subMode === 'engine_tuning'}
+            >
+              <Flame className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>Engine tuning &amp; maps</span>
+            </Button>
             <Button
               tone={subMode === 'library' ? 'primary' : 'quiet'}
               onClick={() => setSubMode('library')}
@@ -311,7 +324,16 @@ export const ProgrammingAndKeysView: React.FC<ProgrammingAndKeysViewProps> = ({
         </div>
       </Surface>
 
-      {subMode === 'library' ? (
+      {subMode === 'engine_tuning' ? (
+        <EngineTuningView
+          vehicle={vehicle}
+          ringStore={ringStore}
+          overrides={overrides}
+          liveBatteryVolts={liveBatteryVolts}
+          onUpdateOverrides={onUpdateOverrides}
+          onCompleteFlash={onCompleteFlash}
+        />
+      ) : subMode === 'library' ? (
         <VehicleModuleLibraryView
           activeVehicle={vehicle}
           initialFocusModuleId={initialFocusModuleId}

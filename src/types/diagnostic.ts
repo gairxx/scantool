@@ -308,4 +308,79 @@ export interface LemonResolveResult {
   allQuickLinks: Array<{ label: string; url: string }>;
 }
 
+export type TuningTableId =
+  | 'fuel_ve'
+  | 'target_lambda'
+  | 'spark_advance'
+  | 'vct_intake'
+  | 'boost_target'
+  | 'injector_rail';
+
+export interface TuningTableSpec {
+  id: TuningTableId;
+  name: string;
+  shortName: string;
+  unit: string;
+  decimals: number;
+  step: number;
+  minAllowed: number;
+  maxAllowed: number;
+  xLabel: string;
+  yLabel: string;
+  xBreakpoints: number[];
+  yBreakpoints: number[];
+  values: number[][]; // [yIndex][xIndex]
+  description: string;
+  higherIsRichOrHigh: 'high' | 'low';
+}
+
+export interface TuningScalarSpec {
+  id:
+    | 'rev_limit_rpm'
+    | 'soft_cut_rpm'
+    | 'vmax_kmh'
+    | 'injector_flow_cc'
+    | 'stoich_afr'
+    | 'idle_rpm_warm'
+    | 'fan_on_temp_c'
+    | 'boost_cut_kpa'
+    | 'knock_retard_max_deg';
+  label: string;
+  category: 'Limiters' | 'Fueling' | 'Thermal & Boost';
+  unit: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  decimals: number;
+  description: string;
+}
+
+export interface TuningPresetSpec {
+  id: 'stock' | 'stage1_93' | 'e85_blend' | 'tow_economy';
+  label: string;
+  fuelOctane: string;
+  summary: string;
+  veMultiplierPct: number;
+  lambdaBoostOffset: number;
+  sparkOffsetHighLoad: number;
+  boostKpaDelta: number;
+  revLimitDelta: number;
+  stoichAfr?: number;
+}
+
+export interface VehicleTuningProfile {
+  vehicleId: string;
+  ecuStrategy: string;
+  aspiration: 'Twin-Turbo GDI' | 'Turbocharged GDI' | 'Naturally Aspirated D4S' | 'Naturally Aspirated GDI';
+  basePeakHp: number;
+  basePeakTqNm: number;
+  peakHpRpm: number;
+  peakTqRpm: number;
+  displacementL: number;
+  tables: Record<TuningTableId, TuningTableSpec>;
+  scalars: TuningScalarSpec[];
+  presets: TuningPresetSpec[];
+}
+
 

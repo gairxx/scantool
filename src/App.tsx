@@ -29,14 +29,14 @@ const NAV_TABS: Array<{ id: WorkspaceTab; label: string; shortcut: string }> = [
   { id: 'topology', label: 'Topology & DTCs', shortcut: 'Alt+1' },
   { id: 'live', label: 'Live data', shortcut: 'Alt+2' },
   { id: 'active', label: 'Active tests', shortcut: 'Alt+3' },
-  { id: 'programming', label: 'Modules & keys', shortcut: 'Alt+4' },
+  { id: 'programming', label: 'ECU & tuning', shortcut: 'Alt+4' },
   { id: 'manual', label: 'Repair manual', shortcut: 'Alt+5' },
   { id: 'reports', label: 'Cloud reports', shortcut: 'Alt+6' },
 ];
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<WorkspaceTab>('topology');
-  const [programmingSubMode, setProgrammingSubMode] = useState<ProgrammingSubMode>('ecu_flash');
+  const [programmingSubMode, setProgrammingSubMode] = useState<ProgrammingSubMode>('engine_tuning');
   const [focusModuleId, setFocusModuleId] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [hardwareDialogOpen, setHardwareDialogOpen] = useState<boolean>(false);
@@ -500,6 +500,7 @@ export default function App() {
             keySlots={keySlots}
             appliedCalibrations={appliedCalibrations}
             overrides={overrides}
+            ringStore={ringStore}
             liveBatteryVolts={headerVoltage}
             initialSubMode={programmingSubMode}
             initialFocusModuleId={focusModuleId}
